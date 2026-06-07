@@ -1,0 +1,6 @@
+{
+  "name": "Sid Sareen Portfolio",
+  "description": "Premium senior game designer portfolio website for Siddharth 'Sid' Sareen.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

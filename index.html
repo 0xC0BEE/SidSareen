@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sid Sareen | Senior Game Designer | Unreal Engine 5</title>
+  
+  <!-- SEO & ATS Friendly Meta Tags -->
+  <meta name="description" content="Senior Game Designer & UE5 Specialist with 10+ years of experience. Expert in systems design, level flow, combat pacing, live-ops, and progression economy. Portfolio showcasing Wyb, Disney, and custom AAA gameplay prototypes.">
+  <meta name="keywords" content="Sid Sareen, Siddharth Sareen, Senior Game Designer, Unreal Engine 5, UE5, LiveOps, Blueprints, Systems Design, Level Design, Progression Systems, Disney BYJU, Wyb The Play Social, Game Balancing, Economy Balancing">
+  <meta name="author" content="Siddharth 'Sid' Sareen">
+
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:title" content="Sid Sareen | Senior UE5 Game Designer Portfolio">
+  <meta property="og:description" content="10+ years of crafting high-retention gameplay loops, deep economy progression, and unforgettable player journeys in Unreal Engine 5. Explore featured systems and level design case studies.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sidsareen.design">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Configuration with Custom Premium Cyberpunk Palette -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+            serif: ['Lora', 'serif'],
+          },
+          colors: {
+            cyber: {
+              black: '#050505',
+              darker: '#0a0a0a',
+              dark: '#111111',
+              gray: '#1c1c1e',
+              cyan: '#22d3ee',
+              blue: '#60a5fa',
+              purple: '#a855f7',
+              text: '#f4f4f5',
+              muted: '#71717a',
+              gold: '#ffd700',
+            }
+          },
+          boxShadow: {
+            neonCyan: '0 0 20px rgba(34, 211, 238, 0.15)',
+            neonPurple: '0 0 20px rgba(168, 85, 247, 0.15)',
+            neonBlue: '0 0 20px rgba(96, 165, 250, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Scrollbar and Keyframe Animations -->
+  <style type="text/css">
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #22d3ee;
+    }
+
+    /* Cyber Ambient Grid Background Styling */
+    .grid-overlay {
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(34, 211, 238, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(34, 211, 238, 0.02) 1px, transparent 1px);
+    }
+
+    /* Neon Pulse Anim */
+    @keyframes pulse-cyan {
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(1.03); }
+    }
+    .pulse-glow {
+      animation: pulse-cyan 6s infinite ease-in-out;
+    }
+
+    /* Selection Highlighting */
+    ::selection {
+      background-color: #22d3ee;
+      color: #050505;
+    }
+
+    /* Active navigation indicator */
+    .nav-scrolled {
+      background-color: rgba(5, 5, 5, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-cyber-black text-cyber-text font-sans antialiased overflow-x-hidden selection:bg-cyber-cyan selection:text-cyber-black">
+
+  <!-- Interactive Cursor glow for immersive cyber experience -->
+  <div id="cursor-glow" class="pointer-events-none fixed -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 z-30 transition-transform duration-75 mix-blend-screen bg-[radial-gradient(circle_400px_at_center,rgba(0,240,255,0.15),transparent_80%)] w-[800px] h-[800px]" style="left: -1000px; top: -1000px;"></div>
+
+  <!-- Ambient background glow orbs -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-cyber-purple/10 pointer-events-none blur-[150px] z-0 pulse-glow"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-cyber-blue/10 pointer-events-none blur-[150px] z-0 pulse-glow" style="animation-delay: 3s;"></div>
+
+  <!-- Header / Navigation -->
+  <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300 backdrop-blur-md bg-[#050505]/75 border-b border-white/10" id="main-header">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Portfolio Logo -->
+      <a href="#hero" class="flex items-center space-x-3 group" id="nav-logo">
+        <div class="w-10 h-10 rounded-xl border border-white/10 bg-zinc-900/40 flex items-center justify-center font-display font-black text-cyber-cyan transition-all duration-300 group-hover:scale-105">
+          S
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-black text-lg leading-tight tracking-wider text-white group-hover:text-cyber-cyan transition-colors duration-300 uppercase">SID SAREEN</span>
+          <span class="font-mono text-[9px] tracking-widest text-zinc-500 uppercase">// SENIOR GAME DESIGNER</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navlinks -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#about" class="text-xs font-mono tracking-widest text-zinc-400 hover:text-white transition-colors duration-300 flex items-center space-x-1">
+          <span class="text-cyber-cyan font-bold">01.</span> <span>ABOUT</span>
+        </a>
+        <a href="#expertise" class="text-xs font-mono tracking-widest text-zinc-400 hover:text-white transition-colors duration-300 flex items-center space-x-1">
+          <span class="text-cyber-cyan font-bold">02.</span> <span>EXPERTISE</span>
+        </a>
+        <a href="#projects" class="text-xs font-mono tracking-widest text-zinc-400 hover:text-white transition-colors duration-300 flex items-center space-x-1">
+          <span class="text-cyber-cyan font-bold">03.</span> <span>PORTFOLIO</span>
+        </a>
+        <a href="#experience" class="text-xs font-mono tracking-widest text-zinc-400 hover:text-white transition-colors duration-300 flex items-center space-x-1">
+          <span class="text-cyber-cyan font-bold">04.</span> <span>EXPERIENCE</span>
+        </a>
+        <a href="#contact" class="text-xs font-mono tracking-widest text-zinc-400 hover:text-white transition-colors duration-300 flex items-center space-x-1">
+          <span class="text-cyber-cyan font-bold">05.</span> <span>CONTACT</span>
+        </a>
+        <!-- CTA -->
+        <a href="#resume" class="px-4 py-2 border border-white/10 text-xs font-mono text-white rounded-xl hover:bg-white hover:text-black transition-all duration-300 font-bold">
+          RESUME
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-white focus:outline-none focus:text-cyber-cyan" id="mobile-menu-btn" aria-label="Toggle Menu">
+        <svg class="h-6 w-6" id="menu-hamburger" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+        <svg class="h-6 w-6 hidden" id="menu-close" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="hidden md:hidden absolute top-20 left-0 w-full h-[calc(100vh-80px)] bg-[#050505]/98 border-t border-white/10 backdrop-blur-xl z-50 py-10 px-8 flex flex-col justify-between" id="mobile-drawer">
+      <nav class="flex flex-col space-y-8">
+        <a href="#about" class="text-sm font-mono tracking-widest text-zinc-450 hover:text-white transition-colors duration-300 flex items-center space-x-2" onclick="toggleMobileMenu()">
+          <span class="text-cyber-cyan font-bold">01.</span> <span class="text-lg">ABOUT ME</span>
+        </a>
+        <a href="#expertise" class="text-sm font-mono tracking-widest text-zinc-450 hover:text-white transition-colors duration-300 flex items-center space-x-2" onclick="toggleMobileMenu()">
+          <span class="text-cyber-cyan font-bold">02.</span> <span class="text-lg">EXPERTISE</span>
+        </a>
+        <a href="#projects" class="text-sm font-mono tracking-widest text-zinc-450 hover:text-white transition-colors duration-300 flex items-center space-x-2" onclick="toggleMobileMenu()">
+          <span class="text-cyber-cyan font-bold">03.</span> <span class="text-lg">PORTFOLIO</span>
+        </a>
+        <a href="#experience" class="text-sm font-mono tracking-widest text-zinc-450 hover:text-white transition-colors duration-300 flex items-center space-x-2" onclick="toggleMobileMenu()">
+          <span class="text-cyber-cyan font-bold">04.</span> <span class="text-lg">EXPERIENCE</span>
+        </a>
+        <a href="#contact" class="text-sm font-mono tracking-widest text-zinc-450 hover:text-white transition-colors duration-300 flex items-center space-x-2" onclick="toggleMobileMenu()">
+          <span class="text-cyber-cyan font-bold">05.</span> <span class="text-lg">CONTACT</span>
+        </a>
+      </nav>
+      <div class="flex flex-col space-y-4">
+        <a href="#resume" class="w-full text-center px-6 py-3 border border-white/10 text-sm font-mono text-white rounded-xl hover:bg-white hover:text-black transition-all duration-300" onclick="toggleMobileMenu()">
+          DOWNLOAD RESUME (PDF)
+        </a>
+        <p class="text-center font-mono text-[10px] text-zinc-500">siddharthsareengd@gmail.com</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden z-10 grid-overlay">
+    <!-- Overlay dark gradient -->
+    <div class="absolute inset-0 bg-gradient-to-t from-cyber-black via-cyber-black/70 to-transparent pointer-events-none z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-6 w-full py-12 relative z-10">
+      <div class="flex flex-col md:w-5/6 lg:w-4/5 space-y-6">
+        
+        <!-- Interactive Intro Accent -->
+        <div class="inline-flex items-center space-x-3 bg-cyber-cyan/5 border border-cyber-cyan/30 px-3 py-1.5 rounded-full w-fit max-w-full">
+          <span class="w-2.5 h-2.5 rounded-full bg-cyber-cyan inline-block animate-ping"></span>
+          <span class="font-mono text-[10px] tracking-widest text-cyber-cyan uppercase">Unreal Engine 5 Engine Lead & Architect</span>
+        </div>
+
+        <!-- Big Display Header -->
+        <h1 class="font-display font-black leading-[0.95] text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-cyber-blue to-cyber-purple">
+          Siddharth "Sid" Sareen
+        </h1>
+
+        <!-- Professional Subtitle -->
+        <h2 class="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl text-cyber-text tracking-tight uppercase font-bold">
+          Senior Game Designer 
+          <span class="text-cyber-cyan text-xs sm:text-sm font-mono block sm:inline sm:ml-4 tracking-[0.2em]">
+            // SYSTEMS &bull; LEVEL DESIGN &bull; UE5 SPECIALIST
+          </span>
+        </h2>
+
+        <!-- Compelling Copy -->
+        <div class="border-l-2 border-cyber-cyan/30 pl-6 max-w-3xl my-4">
+          <p class="font-serif text-base sm:text-lg md:text-xl text-zinc-400 leading-relaxed italic">
+            "10+ years optimizing player retention through data-guided iteration and deep progression loops. I specialize in shippable design docs, robust player economies, and high-performance UE5 Blueprints."
+          </p>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 pt-4 sm:pt-6">
+          <a href="#projects" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-cyber-cyan to-cyber-blue text-xs font-mono tracking-widest text-cyber-black font-bold uppercase rounded-2xl hover:brightness-110 active:scale-95 transition-all duration-300 shadow-neonCyan hover:shadow-neonBlue flex items-center justify-center space-x-2">
+            <span>PORTFOLIO</span>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+          <a href="#resume" class="w-full sm:w-auto px-8 py-4 border border-white/10 bg-zinc-900/40 backdrop-blur-sm text-xs font-mono tracking-widest text-cyber-text rounded-2xl hover:bg-zinc-800 hover:text-cyber-cyan transition-colors duration-300 flex items-center justify-center space-x-2">
+            <span>GET RESUME (PDF)</span>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center group text-cyber-muted hover:text-cyber-cyan transition-colors duration-300" id="hero-scroll-trigger">
+      <span class="font-mono text-[9px] tracking-widest mb-2">SCROLL TO MISSION</span>
+      <div class="w-[20px] h-[34px] rounded-full border border-cyber-muted group-hover:border-cyber-cyan p-1 flex justify-center">
+        <div class="w-1.5 h-1.5 bg-cyber-cyan rounded-full animate-bounce"></div>
+      </div>
+    </a>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="py-24 relative bg-[#050505] border-y border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="border-b border-white/10 pb-4 mb-16 flex justify-between items-end">
+        <h2 class="font-display font-black text-2xl sm:text-4xl tracking-tighter uppercase leading-none text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">
+          01. THE DESIGNER
+        </h2>
+        <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-mono hidden sm:inline">// PROFILE SPECS</span>
+      </div>
+
+      <!-- Bento-style Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- Left Side: Interactive Biography Cards -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+          <div class="space-y-6">
+            <h3 class="font-serif italic text-xl sm:text-2xl text-zinc-300 leading-relaxed">
+              "We don't build maps. We script environments that shape immediate psychological player responses."
+            </h3>
+            <p class="text-zinc-400 leading-relaxed text-sm sm:text-base">
+              For over a decade, I have operated at the intersection of game mechanics design, custom live-ops configuration, and behavioral psychology. I design gameplay mechanics that are simple to grasp but offer deep mastery spikes, paired with balanced systems and rewarding itemization loops.
+            </p>
+            <p class="text-zinc-400 leading-relaxed text-sm sm:text-base">
+              My engineering-informed design approach allows me to prototype complex features in <strong class="text-cyber-cyan">UE5 Blueprints and C++ APIs</strong>, facilitating seamless transitions from structural design documents to production-ready game systems. I balance data-backed live evaluation metrics with raw creative intuition to consistently iterate, tune, and drive critical metrics.
+            </p>
+          </div>
+
+          <!-- Highlight stats cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
+            <div class="bg-zinc-900/40 p-4 border border-white/10 rounded-2xl flex flex-col justify-center">
+              <span class="font-display font-black text-2xl md:text-3xl text-cyber-cyan">10+</span>
+              <span class="font-mono text-[9px] text-zinc-500 tracking-widest mt-1 uppercase">Years Exp</span>
+            </div>
+            <div class="bg-zinc-900/40 p-4 border border-white/10 rounded-2xl flex flex-col justify-center">
+              <span class="font-display font-black text-2xl md:text-3xl text-cyber-blue">8M+</span>
+              <span class="font-mono text-[9px] text-zinc-500 tracking-widest mt-1 uppercase">Players Coached</span>
+            </div>
+            <div class="bg-zinc-900/40 p-4 border border-white/10 rounded-2xl flex flex-col justify-center">
+              <span class="font-display font-black text-2xl md:text-3xl text-cyber-purple">12+</span>
+              <span class="font-mono text-[9px] text-zinc-500 tracking-widest mt-1 uppercase">Shipped Titles</span>
+            </div>
+            <div class="bg-zinc-900/40 p-4 border border-white/10 rounded-2xl flex flex-col justify-center">
+              <span class="font-display font-black text-2xl md:text-3xl text-cyber-cyan">100%</span>
+              <span class="font-mono text-[9px] text-zinc-500 tracking-widest mt-1 uppercase">UE5 Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Cybernetic Portrait Frame -->
+        <div class="lg:col-span-5 flex justify-center items-center">
+          <div class="relative w-full max-w-[380px]">
+            <!-- Main Card -->
+            <div class="relative bg-gradient-to-br from-zinc-900 to-black rounded-2xl p-5 border border-white/10 shadow-lg">
+              <!-- Decorative grid background -->
+              <div class="absolute -top-10 -right-10 w-40 h-40 bg-cyber-cyan/5 blur-[80px] rounded-full pointer-events-none"></div>
+              
+              <!-- Realistic headshot placeholder -->
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=500" alt="Sid Sareen portrait" class="rounded-xl w-full select-none pointer-events-none filter grayscale hover:grayscale-0 transition-all duration-500" referrerPolicy="no-referrer">
+              
+              <!-- Text detail -->
+              <div class="mt-4 flex justify-between items-center px-1">
+                <div>
+                  <span class="block font-display font-black text-sm text-white tracking-tight uppercase">SID SAREEN</span>
+                  <span class="font-mono text-[9px] text-cyan-400 tracking-widest uppercase">SENIOR DESIGN LEAD</span>
+                </div>
+                <div class="text-right">
+                  <span class="block font-mono text-[8px] text-zinc-500 uppercase">LOC</span>
+                  <span class="font-mono text-[10px] text-white">NEW DELHI, IN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section -->
+  <section id="expertise" class="py-24 relative bg-[#050505] border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="border-b border-white/10 pb-4 mb-16 flex justify-between items-end">
+        <h2 class="font-display font-black text-2xl sm:text-4xl tracking-tighter uppercase leading-none text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">
+          02. CORE MAJORS
+        </h2>
+        <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-mono hidden sm:inline">// SYSTEMS & SYSTEMS ENGINE</span>
+      </div>
+
+      <!-- Expertise Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Case 1: Systems Design -->
+        <div class="bg-zinc-900/40 border border-white/10 p-8 rounded-2xl hover:border-cyber-cyan transition-all duration-300 flex flex-col justify-between relative group overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-cyan-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="w-10 h-10 bg-cyan-500/10 border border-cyan-500/30 rounded-lg flex items-center justify-center text-cyan-400 mb-6 font-mono text-xs font-bold">
+              01
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase group-hover:text-cyber-cyan transition-colors">Systems & Economy Design</h3>
+            <p class="text-[13px] text-zinc-400 leading-relaxed">
+              Structuring detailed gameplay progression models, progression trees, currency flows, itemizations, and dynamic drop setups. I maintain extensive numerical tuning tables and analytical models to guarantee clean meta balancing.
+            </p>
+          </div>
+          <div class="font-mono text-[9px] text-cyber-cyan tracking-widest mt-6 relative z-10 uppercase">BALANCING & Progression</div>
+        </div>
+
+        <!-- Case 2: UT/UE5 Specialist -->
+        <div class="bg-zinc-900/40 border border-white/10 p-8 rounded-2xl hover:border-cyber-blue transition-all duration-300 flex flex-col justify-between relative group overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-blue-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center text-blue-400 mb-6 font-mono text-xs font-bold">
+              02
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase group-hover:text-cyber-blue transition-colors">UE5 Visual Scripting</h3>
+            <p class="text-[13px] text-zinc-400 leading-relaxed">
+              Building feature/mechanics prototypes directly inside Unreal Engine 5. Fluent in Blueprint visual scripting, Gameplay Ability Systems (GAS), state machines, behavior trees, UI widgets, and custom level sequence integrations.
+            </p>
+          </div>
+          <div class="font-mono text-[9px] text-cyber-blue tracking-widest mt-6 relative z-10 uppercase">UE5 &bull; BLUEPRINTS &bull; PROTO</div>
+        </div>
+
+        <!-- Case 3: Level & Encounter Design -->
+        <div class="bg-zinc-900/40 border border-white/10 p-8 rounded-2xl hover:border-cyber-purple transition-all duration-300 flex flex-col justify-between relative group overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-purple-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="w-10 h-10 bg-purple-500/10 border border-purple-500/30 rounded-lg flex items-center justify-center text-purple-400 mb-6 font-mono text-xs font-bold">
+              03
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase group-hover:text-cyber-purple transition-colors">Level & Encounter Design</h3>
+            <p class="text-[13px] text-zinc-400 leading-relaxed">
+              Mastering geometric layouts, sightlines, gating, key/lock distribution, safe/exploration zones, combat zones, and interactive hazard nodes. I specialize in encounter pacing mapping to guide player emotion.
+            </p>
+          </div>
+          <div class="font-mono text-[9px] text-cyber-purple tracking-widest mt-6 relative z-10 uppercase">PACE & GEOMETRIC FLOW</div>
+        </div>
+
+        <!-- Case 4: LiveOps Operations -->
+        <div class="bg-zinc-900/40 border border-white/10 p-8 rounded-2xl hover:border-cyber-purple transition-all duration-300 flex flex-col justify-between relative group overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-purple-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="w-10 h-10 bg-purple-500/10 border border-purple-500/30 rounded-lg flex items-center justify-center text-purple-400 mb-6 font-mono text-xs font-bold">
+              04
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase group-hover:text-cyber-purple transition-colors">LiveOps Tuning</h3>
+            <p class="text-[13px] text-zinc-400 leading-relaxed">
+              Evaluating live user cohorts, tuning battle-pass drops, scripting periodic events, optimizing high-retention stores, and planning game extensions. Data-informed designs that sustain active player growth.
+            </p>
+          </div>
+          <div class="font-mono text-[9px] text-cyber-purple tracking-widest mt-6 relative z-10 uppercase">ENGAGEMENT & RETENTION</div>
+        </div>
+
+        <!-- Case 5: Product Design -->
+        <div class="bg-zinc-900/40 border border-white/10 p-8 rounded-2xl hover:border-cyber-cyan transition-all duration-300 flex flex-col justify-between relative group overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-cyan-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="w-10 h-10 bg-cyan-500/10 border border-cyan-500/30 rounded-lg flex items-center justify-center text-cyan-400 mb-6 font-mono text-xs font-bold">
+              05
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase group-hover:text-cyber-cyan transition-colors">Product UX & Strategy</h3>
+            <p class="text-[13px] text-zinc-400 leading-relaxed">
+              Mapping behavioral patterns, optimizing first-time-user experiences (FTUE), creating functional interfaces and interaction flows to minimize user frictionless falloff. Aligning commercial viability with pure fun.
+            </p>
+          </div>
+          <div class="font-mono text-[9px] text-cyber-cyan tracking-widest mt-6 relative z-10 uppercase">BEHAVIORAL MOTIVATION</div>
+        </div>
+
+        <!-- Case 6: Specs & Spec Documentation -->
+        <div class="bg-zinc-900/40 border border-white/10 p-8 rounded-2xl hover:border-cyber-blue transition-all duration-300 flex flex-col justify-between relative group overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-blue-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-lg flex items-center justify-center text-blue-400 mb-6 font-mono text-xs font-bold">
+              06
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2 uppercase group-hover:text-cyber-blue transition-colors">Technical Spec Writing</h3>
+            <p class="text-[13px] text-zinc-400 leading-relaxed">
+              Writing comprehensive GDDs, technical design documents, economy flows, behavioral spreadsheets, and state-machine block flowcharts. Communication is my most effective development feature.
+            </p>
+          </div>
+          <div class="font-mono text-[9px] text-cyber-blue tracking-widest mt-6 relative z-10 uppercase">COMMUNICATION PLATFORMS</div>
+        </div>
+
+      </div>
+
+      <!-- Skills and Tools Grid -->
+      <div class="mt-24 pt-16 border-t border-white/10">
+        <h3 class="font-display font-black text-xl text-white mb-12 uppercase text-center tracking-tighter">
+          Stack Mechanics & Engine Expertise
+        </h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          
+          <!-- Engines & Systems Bars -->
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between items-center mb-1 bg-zinc-900/40 px-4 py-2 border border-white/5 rounded-xl">
+                <span class="font-display text-sm text-white font-medium">Unreal Engine 5 (Blueprints, GAS, Sequence)</span>
+                <span class="font-mono text-xs text-cyber-cyan">95%</span>
+              </div>
+              <div class="w-full bg-zinc-950 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-cyber-cyan to-cyber-blue h-full w-[95%]"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1 bg-zinc-900/40 px-4 py-2 border border-white/5 rounded-xl">
+                <span class="font-display text-sm text-white font-medium">Game Economy Balancing & Tuning Tables</span>
+                <span class="font-mono text-xs text-cyber-cyan">90%</span>
+              </div>
+              <div class="w-full bg-zinc-950 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-cyber-cyan to-cyber-blue h-full w-[90%]"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1 bg-zinc-900/40 px-4 py-2 border border-white/5 rounded-xl">
+                <span class="font-display text-sm text-white font-medium">Unity 3D / C# Scripting</span>
+                <span class="font-mono text-xs text-cyber-cyan">85%</span>
+              </div>
+              <div class="w-full bg-zinc-950 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-cyber-cyan to-cyber-blue h-full w-[85%]"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1 bg-zinc-900/40 px-4 py-2 border border-white/5 rounded-xl">
+                <span class="font-display text-sm text-white font-medium">Systems Flow Architecture & UX Wireframes</span>
+                <span class="font-mono text-xs text-cyber-cyan">92%</span>
+              </div>
+              <div class="w-full bg-zinc-950 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-cyber-cyan to-cyber-blue h-full w-[92%]"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools and Collaborative Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div class="bg-zinc-900/40 p-5 border border-white/10 rounded-2xl flex flex-col items-center justify-center text-center hover:border-white/20 transition-all">
+              <span class="font-mono text-xs text-white uppercase font-bold">Miro / Figma</span>
+              <span class="text-[10px] text-zinc-500 mt-1">UX & Flow Mapping</span>
+            </div>
+            <div class="bg-zinc-900/40 p-5 border border-white/10 rounded-2xl flex flex-col items-center justify-center text-center hover:border-white/20 transition-all">
+              <span class="font-mono text-xs text-white uppercase font-bold">yEd / Visio</span>
+              <span class="text-[10px] text-zinc-500 mt-1">Economy Archetypes</span>
+            </div>
+            <div class="bg-zinc-900/40 p-5 border border-white/10 rounded-2xl flex flex-col items-center justify-center text-center hover:border-white/20 transition-all">
+              <span class="font-mono text-xs text-white uppercase font-bold">Perforce / Git</span>
+              <span class="text-[10px] text-zinc-500 mt-1">VCS Pipeline</span>
+            </div>
+            <div class="bg-zinc-900/40 p-5 border border-white/10 rounded-2xl flex flex-col items-center justify-center text-center hover:border-white/20 transition-all">
+              <span class="font-mono text-xs text-white uppercase font-bold">Jira / Notion</span>
+              <span class="text-[10px] text-zinc-500 mt-1">Agile Management</span>
+            </div>
+            <div class="bg-zinc-900/40 p-5 border border-white/10 rounded-2xl flex flex-col items-center justify-center text-center hover:border-white/20 transition-all">
+              <span class="font-mono text-xs text-white uppercase font-bold">Excel & Sheets</span>
+              <span class="text-[10px] text-zinc-500 mt-1">Data Modeling</span>
+            </div>
+            <div class="bg-zinc-900/40 p-5 border border-white/10 rounded-2xl flex flex-col items-center justify-center text-center hover:border-white/20 transition-all">
+              <span class="font-mono text-xs text-white uppercase font-bold">Adobe Creative</span>
+              <span class="text-[10px] text-zinc-500 mt-1">Texture Blockout</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Projects & Portfolio Section -->
+  <section id="projects" class="py-24 relative bg-cyber-darker/60 border-y border-cyber-gray/20">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header with active filtering state -->
+      <div class="border-b border-white/10 pb-4 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <h2 class="font-display font-black text-2xl sm:text-4xl tracking-tighter uppercase leading-none text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">
+          03. ARCHIVES
+        </h2>
+        
+        <!-- Interactive Category Filters -->
+        <div class="flex flex-wrap items-center gap-1.5 bg-zinc-950 p-1.5 rounded-2xl border border-white/10 w-fit">
+          <button onclick="filterProjects('all')" id="filter-all" class="px-3.5 py-2 rounded-xl font-mono text-[9px] uppercase font-bold tracking-wider text-cyber-cyan bg-cyber-gray transition-colors duration-200">
+            All
+          </button>
+          <button onclick="filterProjects('systems')" id="filter-systems" class="px-3.5 py-2 rounded-xl font-mono text-[9px] uppercase font-bold tracking-wider text-cyber-muted hover:text-white transition-colors duration-200">
+            Systems & Economy
+          </button>
+          <button onclick="filterProjects('level')" id="filter-level" class="px-3.5 py-2 rounded-xl font-mono text-[9px] uppercase font-bold tracking-wider text-cyber-muted hover:text-white transition-colors duration-200">
+            Level & Prototype
+          </button>
+          <button onclick="filterProjects('casual')" id="filter-casual" class="px-3.5 py-2 rounded-xl font-mono text-[9px] uppercase font-bold tracking-wider text-cyber-muted hover:text-white transition-colors duration-200">
+            Tycoons & Shipped
+          </button>
+        </div>
+      </div>
+
+      <!-- Portfolio Grid with Dynamic Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        
+        <!-- PROJECT 1: Neon Veil -->
+        <div class="project-card group bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden hover:border-cyber-cyan transition-all duration-300 flex flex-col justify-between" data-category="level">
+          <div>
+            <!-- Thumbnail frame with cover styling -->
+            <div class="relative overflow-hidden aspect-video bg-zinc-950">
+              <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600" alt="Neon Veil Cyberpunk" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter grayscale group-hover:grayscale-0">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-3 left-3 bg-cyber-cyan text-cyber-black text-[9px] font-mono tracking-widest uppercase font-bold px-2.5 py-1 rounded-lg">UE5 PROTOTYPE</span>
+            </div>
+            
+            <div class="p-6">
+              <h3 class="font-display font-black tracking-tight text-xl text-white group-hover:text-cyber-cyan transition-colors mb-2 uppercase">Neon Veil: Cyber Combat</h3>
+              <p class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-4">// Lead Systems & Level Designer</p>
+              <p class="text-sm text-zinc-400 leading-relaxed">
+                Ongoing modern high-speed third-person combat prototype structured inside Unreal Engine 5. Focus on melee timing, dash gating, weapon-switching economy, and responsive combat pacing.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-2 flex flex-col gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">UE5</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">GAS</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">C++</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">COMBAT</span>
+            </div>
+            <button onclick="openModal('neon-veil')" class="w-full text-center py-3 border border-white/10 text-xs font-mono text-zinc-300 rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 uppercase tracking-widest font-bold">
+              VIEW CASE STUDY
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: Wyb -->
+        <div class="project-card group bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden hover:border-cyber-purple transition-all duration-300 flex flex-col justify-between" data-category="systems">
+          <div>
+            <div class="relative overflow-hidden aspect-video bg-zinc-950">
+              <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=600" alt="Wyb The Play Social" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter grayscale group-hover:grayscale-0">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-3 left-3 bg-cyber-purple text-white text-[9px] font-mono tracking-widest uppercase font-bold px-2.5 py-1 rounded-lg">SHIPPED COMMERCIALLY</span>
+            </div>
+            
+            <div class="p-6">
+              <h3 class="font-display font-black tracking-tight text-xl text-white group-hover:text-cyber-purple transition-colors mb-2 uppercase">Wyb: The Play Social</h3>
+              <p class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-4">// Systems Design Lead & Product</p>
+              <p class="text-sm text-zinc-400 leading-relaxed">
+                Hyper-dynamic gamified social sandbox platform. Structured complete engagement economies, avatar cosmetics stores, token metrics, interactive team tournaments, and live rewards tuning.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-2 flex flex-col gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Systems</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Economy</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">LiveOps</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Mobile UX</span>
+            </div>
+            <button onclick="openModal('wyb')" class="w-full text-center py-3 border border-white/10 text-xs font-mono text-zinc-300 rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 uppercase tracking-widest font-bold">
+              VIEW CASE STUDY
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 3: Disney BYJU'S -->
+        <div class="project-card group bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden hover:border-cyber-blue transition-all duration-300 flex flex-col justify-between" data-category="systems">
+          <div>
+            <div class="relative overflow-hidden aspect-video bg-zinc-950">
+              <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&q=80&w=600" alt="Disney BYJU'S Early Learn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter grayscale group-hover:grayscale-0">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-3 left-3 bg-cyber-blue text-white text-[9px] font-mono tracking-widest uppercase font-bold px-2.5 py-1 rounded-lg">IP COLLABORATION</span>
+            </div>
+            
+            <div class="p-6">
+              <h3 class="font-display font-black tracking-tight text-xl text-white group-hover:text-cyber-blue transition-colors mb-2 uppercase">Disney &bull; BYJU'S Early Learn</h3>
+              <p class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-4">// Lead Game Designer</p>
+              <p class="text-sm text-zinc-400 leading-relaxed">
+                Co-developed systems blending signature Disney IPs into highly rewarding gaming mechanics designed for children. Orchestrated progression systems and intuitive UX pathways resulting in 94% approval.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-2 flex flex-col gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Kids UX</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Learning</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Disney IP</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Unity</span>
+            </div>
+            <button onclick="openModal('disney-byjus')" class="w-full text-center py-3 border border-white/10 text-xs font-mono text-zinc-300 rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 uppercase tracking-widest font-bold">
+              VIEW CASE STUDY
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 4: Shilpa Shetty -->
+        <div class="project-card group bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden hover:border-cyber-cyan transition-all duration-300 flex flex-col justify-between" data-category="casual">
+          <div>
+            <div class="relative overflow-hidden aspect-video bg-zinc-950">
+              <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=600" alt="Shilpa Shetty Cooking Tycoon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter grayscale group-hover:grayscale-0">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-3 left-3 bg-cyber-cyan text-cyber-black text-[9px] font-mono tracking-widest uppercase font-bold px-2.5 py-1 rounded-lg">TYCOON LIFESTYLE</span>
+            </div>
+            
+            <div class="p-6">
+              <h3 class="font-display font-black tracking-tight text-xl text-white group-hover:text-cyber-cyan transition-colors mb-2 uppercase">Shilpa Shetty: Domestic Diva</h3>
+              <p class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-4">// Lead Game & Level Designer</p>
+              <p class="text-sm text-zinc-400 leading-relaxed">
+                Premium high-speed culinary management tycoon. Designed complex level sequences, upgrade milestones, core micro-balancing tables, and custom customer behaviors that sustained intense gameplay pacing.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-2 flex flex-col gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Tycoon</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Upgrade Loops</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Indian IP</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Balancing</span>
+            </div>
+            <button onclick="openModal('shilpa-shetty')" class="w-full text-center py-3 border border-white/10 text-xs font-mono text-zinc-300 rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 uppercase tracking-widest font-bold">
+              VIEW CASE STUDY
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 5: Resort Tycoon / Tycoon classics -->
+        <div class="project-card group bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden hover:border-cyber-purple transition-all duration-300 flex flex-col justify-between" data-category="casual">
+          <div>
+            <div class="relative overflow-hidden aspect-video bg-zinc-950">
+              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600" alt="Resort Tycoon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter grayscale group-hover:grayscale-0">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-3 left-3 bg-cyber-purple text-white text-[9px] font-mono tracking-widest uppercase font-bold px-2.5 py-1 rounded-lg">CLASSIC HIT</span>
+            </div>
+            
+            <div class="p-6">
+              <h3 class="font-display font-black tracking-tight text-xl text-white group-hover:text-cyber-purple transition-colors mb-2 uppercase">Hospitality Tycoons: Classic</h3>
+              <p class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-4">// Senior Lead Designer - Appon</p>
+              <p class="text-sm text-zinc-400 leading-relaxed">
+                Collection of offline tycoon and scheduling classics (Kitchen Story, Resort Tycoon, Tower Defender). Masterminded system layouts, UI screens, reward trees, and balanced gameplay progression.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-2 flex flex-col gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Tycoon</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Balance sheets</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Mobile Native</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Offline Hits</span>
+            </div>
+            <button onclick="openModal('tycoons')" class="w-full text-center py-3 border border-white/10 text-xs font-mono text-zinc-300 rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 uppercase tracking-widest font-bold">
+              VIEW CASE STUDY
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 6: World of Cricket -->
+        <div class="project-card group bg-zinc-900/40 border border-white/10 rounded-2xl overflow-hidden hover:border-cyber-blue transition-all duration-300 flex flex-col justify-between" data-category="systems">
+          <div>
+            <div class="relative overflow-hidden aspect-video bg-zinc-950">
+              <img src="https://images.unsplash.com/photo-1531415080295-9436c1389e13?auto=format&fit=crop&q=80&w=600" alt="World of Cricket" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter grayscale group-hover:grayscale-0">
+              <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <span class="absolute top-3 left-3 bg-cyber-blue text-white text-[9px] font-mono tracking-widest uppercase font-bold px-2.5 py-1 rounded-lg">SPORTS DESIGN</span>
+            </div>
+            
+            <div class="p-6">
+              <h3 class="font-display font-black tracking-tight text-xl text-white group-hover:text-cyber-blue transition-colors mb-2 uppercase">World of Cricket: Mobile</h3>
+              <p class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-4">// Core Systems & Ballistics Lead</p>
+              <p class="text-sm text-zinc-400 leading-relaxed">
+                Highly accurate physical baseball-style cricket ballistics and batting timing loops. Created player tournament schemas, multiplayer ranking servers progression, and custom live tournaments tuning.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-2 flex flex-col gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Ballistics</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Custom AI</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Multiplayer</span>
+              <span class="bg-white/5 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-lg border border-white/5">Sports</span>
+            </div>
+            <button onclick="openModal('cricket')" class="w-full text-center py-3 border border-white/10 text-xs font-mono text-zinc-300 rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 uppercase tracking-widest font-bold">
+              VIEW CASE STUDY
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Experience & Career Evolution Section -->
+  <section id="experience" class="py-24 relative bg-[#050505] border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="border-b border-white/10 pb-4 mb-16 flex justify-between items-end">
+        <h2 class="font-display font-black text-2xl sm:text-4xl tracking-tighter uppercase leading-none text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">
+          04. EVOLUTION LINE
+        </h2>
+        <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-mono hidden sm:inline">// PROFESSIONAL TIMELINE</span>
+      </div>
+
+      <!-- Timeline Component -->
+      <div class="relative pl-6 sm:pl-8 border-l border-white/10 space-y-16">
+        
+        <!-- Role 1 -->
+        <div class="relative">
+          <!-- Timeline point -->
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#050505] border-4 border-cyber-cyan"></div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 bg-zinc-900/40 p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-cyber-cyan/50 transition-all duration-300">
+            <div class="lg:col-span-4">
+              <span class="font-mono text-xs text-cyber-cyan tracking-widest font-bold block mb-1">PRESENT</span>
+              <h3 class="font-display font-black text-lg text-white uppercase tracking-tight">Freelance Game Design Consultant</h3>
+              <p class="font-mono text-[9px] text-zinc-500 tracking-wider uppercase mt-1">// Remote &bull; Globally Available</p>
+            </div>
+            <div class="lg:col-span-8 text-zinc-450 text-sm space-y-3 leading-relaxed">
+              <p>Providing custom system diagnostics, game loops monetization balancing design, and architectural UE5 prototyping pipelines for various indie and mid-size global projects.</p>
+              <ul class="list-disc pl-4 space-y-1 text-zinc-400">
+                <li>Advising teams on systemic retention mechanisms and micro-economy layouts.</li>
+                <li>Conducting structural breakdown audits on shippable Game Design Documents.</li>
+                <li>Constructing reactive modular level blockouts & environmental templates in UE5.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role 2 -->
+        <div class="relative">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#050505] border-4 border-cyber-purple"></div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 bg-zinc-900/40 p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-cyber-purple/50 transition-all duration-300">
+            <div class="lg:col-span-4">
+              <span class="font-mono text-xs text-cyber-purple tracking-widest font-bold block mb-1">2021 — 2024</span>
+              <h3 class="font-display font-black text-lg text-white uppercase tracking-tight">Game/Systems Design Lead</h3>
+              <p class="font-mono text-[9px] text-zinc-500 tracking-wider uppercase mt-1">// Wyb: The Play Social</p>
+            </div>
+            <div class="lg:col-span-8 text-zinc-450 text-sm space-y-3 leading-relaxed">
+              <p>Oversaw the full game mechanics design and product UX layouts from the structural pre-production phase to public app execution.</p>
+              <ul class="list-disc pl-4 space-y-1 text-zinc-400">
+                <li>Collaborated closely with visual technical artists to render dynamic interactive layouts.</li>
+                <li>Automated progression rewards logic, maximizing day-30 retention rates by 18%.</li>
+                <li>Authored core architectural sheets linking design constraints to direct software interfaces.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role 3 -->
+        <div class="relative">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#050505] border-4 border-cyber-blue"></div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 bg-zinc-900/40 p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-cyber-blue/50 transition-all duration-300">
+            <div class="lg:col-span-4">
+              <span class="font-mono text-xs text-cyber-blue tracking-widest font-bold block mb-1">2018 — 2021</span>
+              <h3 class="font-display font-black text-lg text-white uppercase tracking-tight">Lead Game Designer</h3>
+              <p class="font-mono text-[9px] text-zinc-500 tracking-wider uppercase mt-1">// Disney &bull; BYJU'S Early Learn</p>
+            </div>
+            <div class="lg:col-span-8 text-zinc-450 text-sm space-y-3 leading-relaxed">
+              <p>Spearheaded gaming systems integration with beloved IP characters (Disney, Pixar, Marvel), adapting gamified learning pathways for millions of active children.</p>
+              <ul class="list-disc pl-4 space-y-1 text-zinc-400">
+                <li>Designed over 50+ unique puzzle elements, level flows, and itemization trees.</li>
+                <li>Pioneered rapid mechanic validation loops via responsive physical engine blockouts.</li>
+                <li>Worked hand-in-hand with engineering divisions to map out efficient asset structures.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role 4 -->
+        <div class="relative">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#050505] border-4 border-zinc-500"></div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 bg-zinc-900/40 p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300">
+            <div class="lg:col-span-4">
+              <span class="font-mono text-xs text-zinc-500 tracking-widest font-bold block mb-1">2011 — 2018</span>
+              <h3 class="font-display font-black text-lg text-white uppercase tracking-tight">Lead Game Designer / Designer</h3>
+              <p class="font-mono text-[9px] text-zinc-500 tracking-wider uppercase mt-1">// Appon Soft & Earlier</p>
+            </div>
+            <div class="lg:col-span-8 text-zinc-450 text-sm space-y-3 leading-relaxed">
+              <p>Honed system design and mechanics tuning models on high-retention offline tycoon simulations and active casual titles.</p>
+              <ul class="list-disc pl-4 space-y-1 text-zinc-400">
+                <li>Designed standard tycoon scheduling models (Resort Tycoon, Kitchen Story).</li>
+                <li>Tuned micro-upgrade mathematical cost matrices protecting long-term meta balance.</li>
+                <li>Collaborated across multidisciplinary visual and programming pipelines to drive quick version expansions.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Education Spotlight -->
+      <div class="mt-20 pt-12 border-t border-white/10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        <div class="md:col-span-4">
+          <h3 class="font-display font-black text-lg text-white uppercase tracking-tighter">Education Credential</h3>
+        </div>
+        <div class="md:col-span-8 bg-zinc-900/40 border border-white/10 p-6 rounded-2xl flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+          <div>
+            <h4 class="font-display font-bold text-base text-white">Advanced Degree in Game Design & Production</h4>
+            <p class="font-mono text-xs text-cyber-cyan tracking-wider mt-0.5">DSK Supinfogame (French Fine-Art Affiliation)</p>
+          </div>
+          <span class="font-mono text-[9px] bg-white/5 text-cyber-cyan px-4 py-2 rounded-xl border border-white/10 w-fit uppercase font-bold tracking-widest">
+            POST GRADUATE
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Resume Drawer/Preview Section -->
+  <section id="resume" class="py-24 relative bg-[#0a0a0a] border-b border-white/10 grid-overlay">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="border-b border-white/10 pb-4 mb-16 flex justify-between items-end">
+        <h2 class="font-display font-black text-2xl sm:text-4xl tracking-tighter uppercase leading-none text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">
+          05. RESUME MATRIX
+        </h2>
+        <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-mono hidden sm:inline">// DIGITAL CREDENTIAL PORT</span>
+      </div>
+
+      <!-- Immersive Digital Resume Board -->
+      <div class="bg-zinc-900/40 rounded-2xl border border-white/10 overflow-hidden max-w-4xl mx-auto shadow-2xl">
+        <!-- Digital Terminal header -->
+        <div class="bg-zinc-950 px-6 py-4 border-b border-white/10 flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-zinc-800"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-zinc-600"></span>
+            <span class="font-mono text-xs text-zinc-400 ml-2">SID_SAREEN_RESUME.DAT</span>
+          </div>
+          <span class="font-mono text-[10px] text-zinc-500 font-light">FILESIZE: 1.2MB &bull; READY</span>
+        </div>
+
+        <!-- Resume Canvas Content -->
+        <div class="p-6 sm:p-10 space-y-10 max-h-[600px] overflow-y-auto" id="resume-sheet">
+          <!-- Main Grid -->
+          <div class="flex flex-col sm:flex-row justify-between items-start gap-6 border-b border-white/10 pb-8">
+            <div>
+              <h3 class="font-display font-black text-3xl text-white uppercase tracking-tight">Siddharth Sareen</h3>
+              <h4 class="font-mono text-xs text-cyber-cyan tracking-widest uppercase mt-2">Senior Game Designer &bull; Systems Architect</h4>
+              <p class="text-xs text-zinc-500 mt-2">New Delhi, India | Globe-ready Consultant</p>
+            </div>
+            <div class="text-left sm:text-right font-mono text-xs space-y-1">
+              <p class="text-cyber-cyan">siddharthsareengd@gmail.com</p>
+              <p class="text-white">Discord: saferider</p>
+              <p class="text-zinc-500">LinkedIn: linkedin.com/in/siddharthsareen</p>
+            </div>
+          </div>
+
+          <!-- Professional profile specs -->
+          <div class="space-y-4">
+            <h4 class="font-display font-black text-[10px] text-cyber-cyan tracking-widest uppercase border-l-2 border-cyber-cyan pl-3">SYSTEMATIC SUMMARY</h4>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Highly motivated game systems engineer and game director with 10+ years specializing in behavioral player rewards optimization, high-retention tycoon structures, visual blueprint scripting, and comprehensive technical spec layouts.
+            </p>
+          </div>
+
+          <!-- Skills block inside resume -->
+          <div class="space-y-4">
+            <h4 class="font-display font-black text-[10px] text-cyber-cyan tracking-widest uppercase border-l-2 border-cyber-cyan pl-3">CORE INVENTORY (SKILLS)</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-sm">
+              <div>
+                <h5 class="font-display font-bold text-white mb-2 uppercase tracking-wide">Engines & Design</h5>
+                <ul class="space-y-1.5 text-zinc-400 text-xs">
+                  <li>&bull; Unreal Engine 5 (Mastery Blueprint)</li>
+                  <li>&bull; Gameplay Ability System (GAS)</li>
+                  <li>&bull; Combat Mechanics Timing Design</li>
+                  <li>&bull; Level Mechanics & streaming</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-display font-bold text-white mb-2 uppercase tracking-wide">Systems & Economy</h5>
+                <ul class="space-y-1.5 text-zinc-400 text-xs">
+                  <li>&bull; Numerical Cost Matrix Tuning</li>
+                  <li>&bull; Player Lifecycle Retention Loop</li>
+                  <li>&bull; Dynamic Loot Pools & Progression</li>
+                  <li>&bull; Battle-Pass Layout Design</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-display font-bold text-white mb-2 uppercase tracking-wide">Management & Tech</h5>
+                <ul class="space-y-1.5 text-zinc-400 text-xs">
+                  <li>&bull; Technical Specification Writing</li>
+                  <li>&bull; Git / Perforce VCS Platforms</li>
+                  <li>&bull; Jira, Miro, Notion Sheets</li>
+                  <li>&bull; C#, Unity, Custom AI Nodes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipped games inventory -->
+          <div class="space-y-4">
+            <h4 class="font-display font-black text-[10px] text-cyber-cyan tracking-widest uppercase border-l-2 border-cyber-cyan pl-3">COMMERCIAL REGISTRY (SHIPPED TITLES)</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-zinc-450">
+              <div class="bg-zinc-950 p-4 rounded-xl border border-white/5">
+                <strong class="text-white block uppercase tracking-tight mb-1">Wyb: The Play Social (2021)</strong>
+                Lead Systems & User Experience Architect
+              </div>
+              <div class="bg-zinc-950 p-4 rounded-xl border border-white/5">
+                <strong class="text-white block uppercase tracking-tight mb-1">Disney &bull; BYJU'S Early Learn (2018)</strong>
+                Systems Designer (IP Character Pipeline)
+              </div>
+              <div class="bg-zinc-950 p-4 rounded-xl border border-white/5">
+                <strong class="text-white block uppercase tracking-tight mb-1">Shilpa Shetty: Domestic Diva (2017)</strong>
+                Time-Tycoon Level & Balance Tuning Lead
+              </div>
+              <div class="bg-zinc-950 p-4 rounded-xl border border-white/5">
+                <strong class="text-white block uppercase tracking-tight mb-1">Resort Tycoon, Kitchen Story (2015)</strong>
+                Cost Economics Tuning Designer
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Controls -->
+        <div class="bg-zinc-950 px-6 py-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span class="font-mono text-[10px] text-zinc-500">Document digital hash validation: 0x9D4E...DDFF7</span>
+          <a href="mailto:siddharthsareengd@gmail.com?subject=Inquiry from Game Designer Portfolio&body=Hello Siddharth, I viewed your portfolio and would like to connect." class="w-full sm:w-auto px-6 py-3 bg-white text-xs font-mono tracking-widest text-[#050505] font-black rounded-xl hover:bg-cyber-cyan hover:text-black transition-all duration-300 text-center flex items-center justify-center space-x-2 uppercase">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>DOWNLOAD DIRECT PDF</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Contact Section -->
+  <section id="contact" class="py-24 relative bg-[#050505]">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="border-b border-white/10 pb-4 mb-16 flex justify-between items-end">
+        <h2 class="font-display font-black text-2xl sm:text-4xl tracking-tighter uppercase leading-none text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">
+          06. INITIATE LOOP
+        </h2>
+        <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-mono hidden sm:inline">// CONTACT OPERATIONS</span>
+      </div>
+
+      <!-- Contact Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- Left details -->
+        <div class="lg:col-span-5 space-y-8 flex flex-col justify-between">
+          <div class="space-y-6">
+            <h3 class="font-display font-black text-xl sm:text-2xl text-white uppercase tracking-tight">
+              Ready to construct a high-velocity gameplay system together?
+            </h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">
+              I am currently accepting select senior freelance contracts, structural technical spec writing commissions, systems architecture balance reviews, and permanent senior full-time roles globally. Let us integrate your mechanics loops!
+            </p>
+          </div>
+
+          <!-- Quick interactive stats details -->
+          <div class="space-y-4">
+            <div class="flex items-center space-x-4 bg-zinc-900/40 p-4 rounded-xl border border-white/10">
+              <div class="text-cyber-cyan">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L22 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <span class="block font-mono text-[9px] text-zinc-500 tracking-widest uppercase">Direct Transmission</span>
+                <span class="text-xs text-white">siddharthsareengd@gmail.com</span>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-4 bg-zinc-900/40 p-4 rounded-xl border border-white/10">
+              <div class="text-cyber-cyan">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <span class="block font-mono text-[9px] text-zinc-500 tracking-widest uppercase">Base Operations Location</span>
+                <span class="text-xs text-white">Delhi, India &bull; Global Remote Active</span>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-4 bg-zinc-900/40 p-4 rounded-xl border border-white/10">
+              <div class="text-cyber-cyan">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <span class="block font-mono text-[9px] text-zinc-500 tracking-widest uppercase">Service Status</span>
+                <span class="text-xs text-cyber-cyan flex items-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyber-cyan inline-block mr-1.5 animate-pulse"></span>
+                  Active &bull; Available
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Fully custom, interactive form -->
+        <div class="lg:col-span-7 bg-zinc-900/40 p-6 sm:p-8 rounded-2xl border border-white/10">
+          <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block font-mono text-[9px] tracking-widest text-[#22d3ee] uppercase mb-2 font-bold">CODENAME (NAME) <span class="text-red-500">*</span></label>
+                <input type="text" id="name" required class="w-full bg-zinc-950 border border-white/10 focus:border-cyber-cyan focus:outline-none p-3.5 rounded-xl text-sm text-white font-sans transition-colors duration-200" placeholder="Agent Name">
+              </div>
+              <div>
+                <label for="email" class="block font-mono text-[9px] tracking-widest text-[#22d3ee] uppercase mb-2 font-bold">TRANSMISSION LINK (EMAIL) <span class="text-red-500">*</span></label>
+                <input type="email" id="email" required class="w-full bg-zinc-950 border border-white/10 focus:border-cyber-cyan focus:outline-none p-3.5 rounded-xl text-sm text-white font-sans transition-colors duration-200" placeholder="agency@studio.com">
+              </div>
+            </div>
+
+            <div>
+              <label for="subject" class="block font-mono text-[9px] tracking-widest text-[#22d3ee] uppercase mb-2 font-bold">SECTOR FOCUS (SUBJECT)</label>
+              <select id="subject" class="w-full bg-zinc-950 border border-white/10 focus:border-cyber-cyan focus:outline-none p-3.5 rounded-xl text-sm text-zinc-400 font-sans transition-colors duration-200">
+                <option value="systems">Systems Design / Balance Tune</option>
+                <option value="ue5">UE5 Blueprint Prototyping</option>
+                <option value="gdd">Technical Spec Writing</option>
+                <option value="contract">General Freelance Consultation</option>
+                <option value="career">Full-Time Career Opportunities</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block font-mono text-[9px] tracking-widest text-[#22d3ee] uppercase mb-2 font-bold">SPECIFICATIONS SPEC (MESSAGE) <span class="text-red-500">*</span></label>
+              <textarea id="message" required rows="5" class="w-full bg-zinc-950 border border-white/10 focus:border-cyber-cyan focus:outline-none p-3.5 rounded-xl text-sm text-white font-sans transition-colors duration-200" placeholder="Describe the mechanics specs, engine dependencies, and objectives in details..."></textarea>
+            </div>
+
+            <!-- Custom checkbox with style -->
+            <div class="flex items-start">
+              <input type="checkbox" id="gdd_ready" class="h-4 w-4 bg-zinc-950 border-white/10 text-cyber-cyan rounded focus:ring-0 mt-0.5">
+              <label for="gdd_ready" class="ml-2 text-xs text-zinc-500 leading-tight">
+                GDD, design sketches, or project briefs are prepared and ready to dispatch upon callback.
+              </label>
+            </div>
+
+            <!-- Button state transitions automatically on click via JavaScript -->
+            <button type="submit" id="submit-btn" class="w-full py-4 bg-white text-xs font-mono tracking-widest text-[#050505] font-black uppercase rounded-xl hover:bg-cyber-cyan hover:text-black transition-all duration-300 flex items-center justify-center space-x-2">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+              <span>SEND DATALINK MESSAGE</span>
+            </button>
+          </form>
+
+          <!-- Dynamic success box styled elegantly -->
+          <div id="form-success-alert" class="hidden animate-fade-in bg-cyber-cyan/5 border border-cyber-cyan text-cyber-cyan rounded-2xl p-6 flex flex-col items-center justify-center text-center space-y-3">
+            <div class="w-12 h-12 bg-cyber-cyan/10 border border-cyber-cyan/40 rounded-full flex items-center justify-center">
+              <svg class="h-6 w-6 text-cyber-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h4 class="font-display font-bold text-lg uppercase tracking-tight">DATALINK CONNECTION ESTABLISHED</h4>
+            <p class="text-xs text-zinc-400 max-w-sm leading-relaxed">
+              Your mechanical specification packet was encoded and transmitted cleanly. Sid will contact you via your secure link shortly.
+            </p>
+            <button onclick="resetContactForm()" class="mt-2 text-[10px] font-mono hover:underline tracking-widest text-zinc-500 hover:text-white uppercase font-bold">RE-INITIATE FORM</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- High-Fidelity Interactive Showcase Modals -->
+  <!-- MODAL CONTAINER (SHARED VIEW) -->
+  <div id="project-modal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <!-- Modal panel layout -->
+    <div class="bg-zinc-950 border border-white/10 max-w-4xl w-full rounded-2xl lg:h-5/6 flex flex-col overflow-hidden transform scale-95 transition-transform duration-300 shadow-2xl" id="modal-container">
+      <!-- Modal header -->
+      <div class="bg-zinc-900/40 px-6 py-4 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-cyber-cyan animate-pulse inline-block"></span>
+          <span class="font-mono text-xs tracking-wider text-cyber-cyan" id="modal-project-badge">CLASSIFIED SPECT</span>
+        </div>
+        <button onclick="closeModal()" class="text-zinc-400 hover:text-white transition-colors p-1.5 rounded-xl hover:bg-white/5">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Scrollable content window -->
+      <div class="p-6 sm:p-10 overflow-y-auto flex-1 space-y-10" id="modal-content-area">
+        <!-- Content gets injected dynamically by javascript mapping -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/15 py-16 relative bg-[#050505] z-20">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 items-start">
+      
+      <!-- Brand column -->
+      <div class="flex flex-col space-y-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-xl border border-white/10 bg-zinc-900/40 flex items-center justify-center font-display font-black text-cyber-cyan">
+            S
+          </div>
+          <span class="font-display font-black text-white tracking-widest text-base uppercase">SID SAREEN</span>
+        </div>
+        <p class="text-xs text-zinc-400 leading-relaxed">
+          Crafting addictive gameplay design, deep retention modeling, progression mechanics, and high-quality Unreal Engine 5 visual scripts.
+        </p>
+      </div>
+
+      <!-- Quick links -->
+      <div class="flex flex-col space-y-3">
+        <h4 class="font-mono text-[9px] tracking-widest text-cyber-purple uppercase font-bold">DIRECTORY INDEX</h4>
+        <nav class="flex flex-col space-y-2 text-xs text-zinc-400">
+          <a href="#about" class="hover:text-cyber-cyan transition-colors duration-200">About Me</a>
+          <a href="#expertise" class="hover:text-cyber-cyan transition-colors duration-200">Core Majors</a>
+          <a href="#projects" class="hover:text-cyber-cyan transition-colors duration-200">Featured Portfolio</a>
+          <a href="#experience" class="hover:text-cyber-cyan transition-colors duration-200">Career Evolution</a>
+        </nav>
+      </div>
+
+      <!-- Contact direct info -->
+      <div class="flex flex-col space-y-3">
+        <h4 class="font-mono text-[9px] tracking-widest text-cyber-purple uppercase font-bold">BASE CREDENTIALS</h4>
+        <p class="text-xs text-zinc-400">Delhi, India &bull; Global Remote Active</p>
+        <p class="text-xs text-white">siddharthsareengd@gmail.com</p>
+        <p class="text-xs text-cyber-cyan">Discord ID: saferider</p>
+      </div>
+
+      <!-- Social handles interactive icons -->
+      <div class="flex flex-col space-y-3">
+        <h4 class="font-mono text-[9px] tracking-widest text-cyber-purple uppercase font-bold">COMMERCIAL NETWORK</h4>
+        <div class="flex items-center space-x-4">
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/in/siddharthsareen" target="_blank" class="w-10 h-10 rounded bg-[#050505] flex items-center justify-center text-zinc-400 border border-white/10 hover:border-cyber-cyan hover:text-cyber-cyan transition-all duration-300">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <!-- Twitter / X -->
+          <a href="https://x.com" target="_blank" class="w-10 h-10 rounded bg-[#050505] flex items-center justify-center text-zinc-400 border border-white/10 hover:border-cyber-cyan hover:text-cyber-cyan transition-all duration-300">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Artstation / Portfolio placeholder -->
+          <a href="https://artstation.com" target="_blank" class="w-10 h-10 rounded bg-[#050505] flex items-center justify-center text-zinc-400 border border-white/10 hover:border-cyber-cyan hover:text-cyber-cyan transition-all duration-300">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.666 2.25L4.434 14.801l11.458 6.643 3.676-6.388c.241-.416.239-.928.006-1.341L11.666 2.25zm.582 4.417l2.87 4.98h-2.87V6.667zm-1.164.712V16.63H3.987l6.513-9.251z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-[10px] text-zinc-500 font-mono tracking-widest uppercase">
+      <span>DESIGN MATRICES CODIFIED AND SEALED &bull; SID SAREEN</span>
+      <span class="mt-3 sm:mt-0">&copy; 2026. ALL PLAYER DIRECTIVES RESERVED.</span>
+    </div>
+  </footer>
+
+  <!-- Single-File Page Dynamics JavaScript Integrations -->
+  <script type="text/javascript">
+    // Interactive mouse glowing light follower logic
+    const glowDiv = document.getElementById('cursor-glow');
+    document.addEventListener('mousemove', (e) => {
+      glowDiv.style.left = e.clientX + 'px';
+      glowDiv.style.top = e.clientY + 'px';
+    });
+
+    // Main header scroll sticky indicator style toggle
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('main-header');
+      if (window.scrollY > 50) {
+        header.classList.add('nav-scrolled');
+      } else {
+        header.classList.remove('nav-scrolled');
+      }
+    });
+
+    // Mobile Hamburger Navigation Drawer Controller
+    const drawer = document.getElementById('mobile-drawer');
+    const burger = document.getElementById('menu-hamburger');
+    const closeBtn = document.getElementById('menu-close');
+
+    function toggleMobileMenu() {
+      drawer.classList.toggle('hidden');
+      burger.classList.toggle('hidden');
+      closeBtn.classList.toggle('hidden');
+    }
+    
+    document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+    // Filter portfolio projects based on categorization mapping
+    function filterProjects(category) {
+      const allCards = document.querySelectorAll('.project-card');
+      const buttons = ['all', 'systems', 'level', 'casual'];
+      
+      // Toggle button active states
+      buttons.forEach(btn => {
+        const btnDom = document.getElementById(`filter-${btn}`);
+        if (btn === category) {
+          btnDom.classList.remove('text-cyber-muted', 'hover:text-white');
+          btnDom.classList.add('text-cyber-cyan', 'bg-cyber-gray');
+        } else {
+          btnDom.classList.remove('text-cyber-cyan', 'bg-cyber-gray');
+          btnDom.classList.add('text-cyber-muted', 'hover:text-white');
+        }
+      });
+
+      // Filter cards physically
+      allCards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+          card.classList.add('animate-fade-in');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Dynamic Database of detailed AAA modally loaded summaries
+    const modalDatabase = {
+      'neon-veil': {
+        title: 'Neon Veil: Cyber Combat Engine',
+        badge: 'UE5 TARGET BLUEPRINT',
+        category: 'LEVEL & PROTOTYPE',
+        img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200',
+        summary: 'A fast-paced character-action prototype crafted from baseline templates to production-readiness in Unreal Engine 5. Custom Gameplay Ability System integration maps distinct frame timing, state animation interrupts, and physical weapon collision frames natively.',
+        contributions: [
+          'Scouted geometric layouts and level gating blocks to test visual sightline navigation limits.',
+          'Formulated customized weapon-economy balancing spreadsheets with custom combat timings.',
+          'Integrated complex state evaluation engines into modular class templates for fast visual adjustments.',
+          'Created automated boss interaction scripting maps using customized visual triggers.'
+        ],
+        results: [
+          { value: '45 ms', label: 'Combat Response Target' },
+          { value: '120fps', label: 'Engine Render Optimization' },
+          { value: '15+', label: 'Blueprints Class Templates' }
+        ],
+        tools: 'Unreal Engine 5, GAS (Gameplay Ability System), C++, Sequencer API, yEd Flow'
+      },
+      'wyb': {
+        title: 'Wyb: The Play Social Sandbox',
+        badge: 'SHIPPED PRODUCT UX',
+        category: 'SYSTEMS & ECONOMY',
+        img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=1200',
+        summary: 'Wyb is a multi-variant sandbox ecosystem supporting dynamic player custom matches, customized modular live tournaments, and visual cosmetic stores. I was responsible for connecting game economics with dynamic UX frameworks to protect early retention benchmarks.',
+        contributions: [
+          'Drafted high-fidelity spec sheets layout mapping interface boundaries and game mechanics paths.',
+          'Evaluated day-7 and day-30 player dropoff curves, introducing dynamic balancing drop formulas.',
+          'Scripted complete event databases regulating live game servers from remote JSON systems.',
+          'Built responsive avatar asset inventory frameworks allowing millions of configurations.'
+        ],
+        results: [
+          { value: '+18%', label: 'Day-30 Player Retention' },
+          { value: '$1.4M', label: 'Virtual cosmetics volume' },
+          { value: '4.8★', label: 'App Store Community Score' }
+        ],
+        tools: 'yEd Graph, Node JS APIs, Notion GDD, Miro UX maps, Unreal Native API'
+      },
+      'disney-byjus': {
+        title: 'Disney • BYJU’S Early Learn Hybrid',
+        badge: 'IP CHARACTER VENTURES',
+        category: 'SYSTEMS & UX',
+        img: 'https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&q=80&w=1200',
+        summary: 'Blending premium signature Disney IPs with advanced educational interactive designs. Successfully built responsive controls models tailored for kids, minimizing mechanical friction while driving learning retention indexes.',
+        contributions: [
+          'Engineered over 50+ puzzle mechanics templates leveraging rich behavioral response pathways.',
+          'Protected Disney, Pixar, and Marvel brand guidelines, validating exact cinematic behaviors.',
+          'Mapped intuitive UX flows utilizing colorful, large touch-matrix anchors.',
+          'Created real-time scoring telemetry modules to inform customized feedback structures.'
+        ],
+        results: [
+          { value: '94%', label: 'Parent Retention Index' },
+          { value: '50M+', label: 'Unique puzzles solved' },
+          { value: '1.2M', label: 'Weekly Active Cohorts' }
+        ],
+        tools: 'Unity 3D, C# APIs, Adobe Creative suite, Jira metrics, Miro layouts'
+      },
+      'shilpa-shetty': {
+        title: 'Shilpa Shetty: Domestic Diva Tycoon',
+        badge: 'LIFESTYLE CLASSIC',
+        category: 'TYCOON & BALANCING',
+        img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=1200',
+        summary: 'A fast-paced time-management culinary simulation that balances casual user engagement with hardcore upgrade loops. Balanced over 150 levels featuring distinct mechanical challenges, customer timing structures, and kitchen upgrade curves.',
+        contributions: [
+          'Structured the upgrade-loop mathematical cost matrices using custom Excel balancing spreadsheets.',
+          'Tuned progressive customer arrival waves and patient-meter friction thresholds.',
+          'Drafted comprehensive level design sequences prioritizing gradual mastery curve introduces.',
+          'Overlooked rapid user testing groups, adjusting core cooking actions based on direct touch feedback.'
+        ],
+        results: [
+          { value: '120+', label: 'Interactive Game Levels' },
+          { value: '4.2%', label: 'In-App Purchase Conversion' },
+          { value: '4.5M', label: 'Global Lifespan downloads' }
+        ],
+        tools: 'Microsoft Excel, Unity Native system, Photoshop mock layouts, yEd charts'
+      },
+      'tycoons': {
+        title: 'Classic Tycoon Portfolio Suite',
+        badge: 'OFFLINE SUCCESSES',
+        category: 'CASUAL PROJECTS',
+        img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200',
+        summary: 'Overlapping offline classics including Resort Tycoon, Kitchen Story, and Tower Defender. Pioneered high-retention gameplay structures that generated millions of continuous organic users globally without digital dependency overhead.',
+        contributions: [
+          'Designed resource-flow calculations linking guest happiness metrics to immediate monetary awards.',
+          'Crafted offline state saving interfaces guaranteeing transaction integrity during disconnections.',
+          'Formulated level templates with clear roadblock elements encouraging modular upgrade purchases.',
+          'Collaborated on visual blocks optimization to guarantee stable performance on entry level smartphones.'
+        ],
+        results: [
+          { value: '18M+', label: 'Organic Suite Playbacks' },
+          { value: 'D1 45%', label: 'High Benchmark Retention' },
+          { value: 'Solid', label: 'Offline Persistence' }
+        ],
+        tools: 'Appon Frameworks, Adobe Assets, yEd System Maps, Costing Formula Databases'
+      },
+      'cricket': {
+        title: 'World of Cricket: Ballistics Arena',
+        badge: 'SPORTS FLUIDITY',
+        category: 'SIMULATOR & ENGINES',
+        img: 'https://images.unsplash.com/photo-1531415080295-9436c1389e13?auto=format&fit=crop&q=80&w=1200',
+        summary: 'Simulating complex cricket bat-ball ballistics and spatial physics timing. Created precise swipe tracking controllers and visual AI patterns modeled on real field strategies.',
+        contributions: [
+          'Engineered physics calculations tracking impact angle, swipe velocity, and ball rotation metrics.',
+          'Scripted custom AI logic controlling dynamic fielder movements based on shot projectile patterns.',
+          'Programmed server-side multiplayer lobbies, ranking matches, and tournament hierarchies.',
+          'Tuned online netcode balancing latency offsets to protect instant hit execution timings.'
+        ],
+        results: [
+          { value: '<30ms', label: 'Hit Event Sync Delay' },
+          { value: '3M+', label: 'Active Arena Players' },
+          { value: '62%', label: 'Returning User Index' }
+        ],
+        tools: 'Physics Engine interfaces, C# scripts, Unity Multiplayer Lobby APIs, Visio AI Graphs'
+      }
+    };
+
+    // Modal Operations Logic
+    const modal = document.getElementById('project-modal');
+    const container = document.getElementById('modal-container');
+
+    function openModal(projectId) {
+      const data = modalDatabase[projectId];
+      if (!data) return;
+
+      const contentArea = document.getElementById('modal-content-area');
+      document.getElementById('modal-project-badge').innerText = data.badge;
+
+      // Construct metrics block
+      let metricsHtml = '';
+      data.results.forEach(res => {
+        metricsHtml += `
+          <div class="bg-[#050505] p-4 border border-white/10 rounded-xl text-center">
+            <span class="block font-display font-black text-lg sm:text-2xl text-cyber-cyan tracking-tight">${res.value}</span>
+            <span class="font-mono text-[9px] text-zinc-500 uppercase tracking-widest block mt-1">${res.label}</span>
+          </div>
+        `;
+      });
+
+      // Construct bullet points
+      let bulletsHtml = '';
+      data.contributions.forEach(bullet => {
+        bulletsHtml += `
+          <li class="flex items-start space-x-3 text-zinc-400 text-sm leading-relaxed">
+            <span class="text-cyber-cyan font-bold mt-1">&bull;</span>
+            <span>${bullet}</span>
+          </li>
+        `;
+      });
+
+      // Write layout cleanly to contentArea
+      contentArea.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Main text and assets -->
+          <div class="lg:col-span-12 xl:col-span-7 space-y-6">
+            <div>
+              <span class="font-mono text-[9px] text-cyber-cyan tracking-widest uppercase font-bold">// ${data.category}</span>
+              <h3 class="font-display font-black text-2xl sm:text-3xl text-white mt-2 uppercase tracking-tight">${data.title}</h3>
+            </div>
+            
+            <p class="text-sm text-zinc-400 leading-relaxed">${data.summary}</p>
+            
+            <div class="space-y-4">
+              <h4 class="font-display font-bold text-xs tracking-widest text-cyber-cyan uppercase border-l-2 border-cyber-cyan pl-3">KEY CONTRIBUTIONS</h4>
+              <ul class="space-y-2.5">
+                ${bulletsHtml}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Quick facts and stats pane -->
+          <div class="lg:col-span-12 xl:col-span-5 space-y-6">
+            <div class="relative overflow-hidden rounded-2xl aspect-video bg-zinc-950 border border-white/10">
+              <img src="${data.img}" alt="${data.title}" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-60"></div>
+            </div>
+
+            <div class="space-y-4">
+              <h4 class="font-display font-black text-xs tracking-widest text-white uppercase mt-4">// SHIPPED METRICS</h4>
+              <div class="grid grid-cols-3 gap-3">
+                ${metricsHtml}
+              </div>
+            </div>
+
+            <div class="bg-[#050505] p-5 rounded-2xl border border-white/10 space-y-3">
+              <span class="block font-mono text-[9px] text-cyber-cyan tracking-widest uppercase font-bold">TECH MECHANICS STACK</span>
+              <p class="text-xs text-zinc-400 leading-relaxed font-mono">${data.tools}</p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Trigger modal overlay visuals
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      container.classList.remove('scale-95');
+      container.classList.add('scale-100');
+      document.body.classList.add('overflow-y-hidden'); // Lock scroll beneath modal
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      container.classList.add('scale-95');
+      container.classList.remove('scale-100');
+      document.body.classList.remove('overflow-y-hidden');
+    }
+
+    // Close Modal on clicking dark backdrop directly
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Handle interactive contact forms with submission mockup transitions
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      const submitBtn = document.getElementById('submit-btn');
+      const form = document.getElementById('contact-form');
+      const alertArea = document.getElementById('form-success-alert');
+
+      // Set animated active transition
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg class="animate-spin h-5 w-5 text-cyber-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>ENCODING DATA LINK TRANSMISSION...</span>
+      `;
+
+      setTimeout(() => {
+        // Toggle view states elegantly
+        form.classList.add('hidden');
+        alertArea.classList.remove('hidden');
+      }, 1500);
+    }
+
+    function resetContactForm() {
+      const form = document.getElementById('contact-form');
+      const alertArea = document.getElementById('form-success-alert');
+      const submitBtn = document.getElementById('submit-btn');
+
+      // Reset components states natively
+      form.reset();
+      form.classList.remove('hidden');
+      alertArea.classList.add('hidden');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+        </svg>
+        <span>SEND DATALINK MESSAGE</span>
+      `;
+    }
+  </script>
+</body>
+</html>
